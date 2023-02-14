@@ -288,6 +288,2437 @@ paths:
           $ref: '#/components/responses/errorable_502'
         "503":
           $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/business-units:
+    description: |-
+      A Business Unit can represent a Company or a Division.
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_business_units:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdBusinessUnitsGet
+      description: |-
+        Query business units for a specific associate.
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+        - name: sort
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Sort'
+          explode: true
+        - name: limit
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: offset
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: withTotal
+          x-annotation-default: true
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "boolean"
+          explode: true
+        - name: where
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/QueryPredicate'
+          explode: true
+        - name: /^var[.][a-zA-Z0-9]+$/
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              type: "string"
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessUnitPagedQueryResponse'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_business_units:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdBusinessUnitsPost
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessUnitDraft'
+
+      responses:
+        "201":
+          description: |-
+            201
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessUnit'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/business-units/key={key}:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_business_units:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdBusinessUnitsKeyByKeyGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessUnit'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_business_units:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdBusinessUnitsKeyByKeyPost
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessUnitUpdate'
+
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessUnit'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/business-units/{ID}:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_business_units:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdBusinessUnitsByIDGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessUnit'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_business_units:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdBusinessUnitsByIDPost
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessUnitUpdate'
+
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessUnit'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/carts:
+    description: |-
+      A shopping cart holds product variants and can be ordered.
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyCartsGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+        - name: sort
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Sort'
+          explode: true
+        - name: limit
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: offset
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: withTotal
+          x-annotation-default: true
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "boolean"
+          explode: true
+        - name: where
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/QueryPredicate'
+          explode: true
+        - name: /^var[.][a-zA-Z0-9]+$/
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              type: "string"
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartPagedQueryResponse'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyCartsPost
+      description: |-
+        Creates a [Cart](ctp:api:type:Cart) in a [BusinessUnit](ctp:api:type:BusinessUnit).
+        Creating a Cart can fail with an [InvalidOperationError](ctp:api:type:InvalidOperationError) if the referenced [ShippingMethod](ctp:api:type:ShippingMethod) in the [CartDraft](ctp:api:type:CartDraft) has a predicate which does not match the Cart.
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartDraft'
+
+      responses:
+        "201":
+          description: |-
+            201
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/carts/key={key}:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyCartsKeyByKeyGet
+      description: |-
+        If the Cart exists in the [Project](ctp:api:type:Project) but does not reference the requested [BusinessUnit](ctp:api:type:BusinessUnit), this method returns a [ResourceNotFound](/errors#resourcenotfound) error.
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyCartsKeyByKeyPost
+      description: |-
+        If the Cart exists in the [Project](ctp:api:type:Project) but does not reference the requested [BusinessUnit](ctp:api:type:BusinessUnit), this method returns a [ResourceNotFound](/errors#resourcenotfound) error.
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartUpdate'
+
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    delete:
+      security:
+        - oauth_2_0:
+            - "manage_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyCartsKeyByKeyDelete
+      parameters:
+        - name: dataErasure
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "boolean"
+          explode: true
+        - name: version
+          in: query
+          required: true
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/carts/replicate:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyCartsReplicatePost
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplicaCartDraft'
+
+      responses:
+        "201":
+          description: |-
+            201
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/carts/{ID}:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyCartsByIDGet
+      description: |-
+        If the Cart exists in the [Project](ctp:api:type:Project) but does not reference the requested [BusinessUnit](ctp:api:type:BusinessUnit), this method returns a [ResourceNotFound](/errors#resourcenotfound) error.
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyCartsByIDPost
+      description: |-
+        If the Cart exists in the [Project](ctp:api:type:Project) but does not reference the requested [BusinessUnit](ctp:api:type:BusinessUnit), this method returns a [ResourceNotFound](/errors#resourcenotfound) error.
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartUpdate'
+
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    delete:
+      security:
+        - oauth_2_0:
+            - "manage_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyCartsByIDDelete
+      parameters:
+        - name: dataErasure
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "boolean"
+          explode: true
+        - name: version
+          in: query
+          required: true
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/orders:
+    description: |-
+      An order can be created from a cart, usually after a checkout process has been completed.
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyOrdersGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+        - name: sort
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Sort'
+          explode: true
+        - name: limit
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: offset
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: withTotal
+          x-annotation-default: true
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "boolean"
+          explode: true
+        - name: where
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/QueryPredicate'
+          explode: true
+        - name: /^var[.][a-zA-Z0-9]+$/
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              type: "string"
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderPagedQueryResponse'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyOrdersPost
+      description: |-
+        Creates an Order from a [Cart](ctp:api:type:Cart) from in a [BusinessUnit](ctp:api:type:BusinessUnit).
+        The Cart must have a shipping address set before creating an Order.
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderFromCartDraft'
+
+      responses:
+        "201":
+          description: |-
+            201
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/orders/order-number={orderNumber}:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: orderNumber
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyOrdersOrderNumberByOrderNumberGet
+      description: |-
+        If the Order exists in the [Project](ctp:api:type:Project) but does not reference the requested [BusinessUnit](ctp:api:type:BusinessUnit), this method returns a [ResourceNotFound](/errors#resourcenotfound) error.
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyOrdersOrderNumberByOrderNumberPost
+      description: |-
+        If the Order exists in the [Project](ctp:api:type:Project) but does not reference the requested [BusinessUnit](ctp:api:type:BusinessUnit), this method returns a [ResourceNotFound](/errors#resourcenotfound) error.
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderUpdate'
+
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/orders/quotes:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_quotes:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyOrdersQuotesPost
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderFromQuoteDraft'
+
+      responses:
+        "201":
+          description: |-
+            201
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/orders/{ID}:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyOrdersByIDGet
+      description: |-
+        If the Order exists in the [Project](ctp:api:type:Project) but does not reference the requested [BusinessUnit](ctp:api:type:BusinessUnit), this method returns a [ResourceNotFound](/errors#resourcenotfound) error.
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_orders:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyOrdersByIDPost
+      description: |-
+        If the Order exists in the [Project](ctp:api:type:Project) but does not reference the requested [BusinessUnit](ctp:api:type:BusinessUnit), this method returns a [ResourceNotFound](/errors#resourcenotfound) error.
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderUpdate'
+
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/quote-requests:
+    description: |-
+      A request for a Quote holds product variants and can be ordered.
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_quote_requests:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyQuoteRequestsGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+        - name: sort
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Sort'
+          explode: true
+        - name: limit
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: offset
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: withTotal
+          x-annotation-default: true
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "boolean"
+          explode: true
+        - name: where
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/QueryPredicate'
+          explode: true
+        - name: /^var[.][a-zA-Z0-9]+$/
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              type: "string"
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteRequestPagedQueryResponse'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_quote_requests:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyQuoteRequestsPost
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequestDraft'
+
+      responses:
+        "201":
+          description: |-
+            201
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteRequest'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/quote-requests/key={key}:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_quote_requests:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyQuoteRequestsKeyByKeyGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteRequest'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_quote_requests:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyQuoteRequestsKeyByKeyPost
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequestUpdate'
+
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteRequest'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/quote-requests/{ID}:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_quote_requests:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyQuoteRequestsByIDGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteRequest'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_quote_requests:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyQuoteRequestsByIDPost
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequestUpdate'
+
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteRequest'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/quotes:
+    description: |-
+      A quote holds the negotiated offer.
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_quotes:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyQuotesGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+        - name: sort
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Sort'
+          explode: true
+        - name: limit
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: offset
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: withTotal
+          x-annotation-default: true
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "boolean"
+          explode: true
+        - name: where
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/QueryPredicate'
+          explode: true
+        - name: /^var[.][a-zA-Z0-9]+$/
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              type: "string"
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotePagedQueryResponse'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/quotes/key={key}:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_quotes:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyQuotesKeyByKeyGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quote'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_quotes:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyQuotesKeyByKeyPost
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteUpdate'
+
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quote'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/as-associate/{associateId}/in-business-unit/key={businessUnitKey}/quotes/{ID}:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: associateId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: businessUnitKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_quotes:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyQuotesByIDGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quote'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_quotes:{projectKey}"
+      operationId: ByProjectKeyAsAssociateByAssociateIdInBusinessUnitKeyByBusinessUnitKeyQuotesByIDPost
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteUpdate'
+
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quote'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/associate-roles:
+    description: |-
+      An Assocaite Role enables permissions over a Business Unit to an Associate.
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_associate_roles:{projectKey}"
+      operationId: ByProjectKeyAssociateRolesGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+        - name: sort
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Sort'
+          explode: true
+        - name: limit
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: offset
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: withTotal
+          x-annotation-default: true
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "boolean"
+          explode: true
+        - name: where
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/QueryPredicate'
+          explode: true
+        - name: /^var[.][a-zA-Z0-9]+$/
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              type: "string"
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssociateRolePagedQueryResponse'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_associate_roles:{projectKey}"
+      operationId: ByProjectKeyAssociateRolesPost
+      description: |-
+        Creating a Associate Role generates the [AssociateRoleCreated](ctp:api:type:AssociateRoleCreatedMessage) Message.
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssociateRoleDraft'
+
+      responses:
+        "201":
+          description: |-
+            201
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssociateRole'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/associate-roles/key={key}:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_associate_roles:{projectKey}"
+      operationId: ByProjectKeyAssociateRolesKeyByKeyGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssociateRole'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_associate_roles:{projectKey}"
+      operationId: ByProjectKeyAssociateRolesKeyByKeyPost
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssociateRoleUpdate'
+
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssociateRole'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    delete:
+      security:
+        - oauth_2_0:
+            - "manage_associate_roles:{projectKey}"
+      operationId: ByProjectKeyAssociateRolesKeyByKeyDelete
+      description: |-
+        Deleting an AssociateRole generates the [AssociateRoleDeleted](ctp:api:type:AssociateRoleDeletedMessage) Message. An AssociateRole can only be deleted if it is not assigned to any [Associates](ctp:api:type:Associate).
+      parameters:
+        - name: version
+          in: query
+          required: true
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssociateRole'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+  /{projectKey}/associate-roles/{ID}:
+    parameters:
+      - name: projectKey
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      security:
+        - oauth_2_0:
+            - "view_associate_roles:{projectKey}"
+      operationId: ByProjectKeyAssociateRolesByIDGet
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssociateRole'
+
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    post:
+      security:
+        - oauth_2_0:
+            - "manage_associate_roles:{projectKey}"
+      operationId: ByProjectKeyAssociateRolesByIDPost
+      parameters:
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssociateRoleUpdate'
+
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssociateRole'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
+    delete:
+      security:
+        - oauth_2_0:
+            - "manage_associate_roles:{projectKey}"
+      operationId: ByProjectKeyAssociateRolesByIDDelete
+      parameters:
+        - name: version
+          in: query
+          required: true
+          style: form
+          schema:
+            type: "number"
+            format: "double"
+          explode: true
+        - name: expand
+          in: query
+          required: false
+          style: form
+          schema:
+            type: "array"
+            items:
+              $ref: '#/components/schemas/Expansion'
+          explode: true
+      responses:
+        "200":
+          description: |-
+            200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssociateRole'
+
+        "409":
+          $ref: '#/components/responses/conflicting_409'
+        "400":
+          $ref: '#/components/responses/errorable_400'
+        "401":
+          $ref: '#/components/responses/errorable_401'
+        "403":
+          $ref: '#/components/responses/errorable_403'
+        "404":
+          $ref: '#/components/responses/errorable_404'
+        "500":
+          $ref: '#/components/responses/errorable_500'
+        "502":
+          $ref: '#/components/responses/errorable_502'
+        "503":
+          $ref: '#/components/responses/errorable_503'
   /{projectKey}/attribute-groups:
     description: |-
       Attribute groups ... TODO
@@ -24433,6 +26864,411 @@ components:
           type: "array"
           items:
             $ref: '#/components/schemas/ApiClient'
+    AssociateRole:
+      allOf:
+        - $ref: '#/components/schemas/BaseResource'
+        - type: "object"
+          required:
+            - buyerAssignable
+            - createdAt
+            - id
+            - key
+            - lastModifiedAt
+            - permissions
+            - version
+          properties:
+            id:
+              type: "string"
+            version:
+              type: "integer"
+              format: "int64"
+            createdAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedBy:
+              $ref: '#/components/schemas/LastModifiedBy'
+            createdBy:
+              $ref: '#/components/schemas/CreatedBy'
+            key:
+              type: "string"
+            buyerAssignable:
+              type: "boolean"
+            name:
+              type: "string"
+            permissions:
+              type: "array"
+              items:
+                $ref: '#/components/schemas/Permission'
+            custom:
+              $ref: '#/components/schemas/CustomFields'
+    AssociateRoleDraft:
+      type: "object"
+      required:
+        - key
+      properties:
+        key:
+          type: "string"
+        name:
+          type: "string"
+        buyerAssignable:
+          type: "boolean"
+        permissions:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/Permission'
+        custom:
+          $ref: '#/components/schemas/CustomFieldsDraft'
+    AssociateRoleKeyReference:
+      allOf:
+        - $ref: '#/components/schemas/KeyReference'
+        - type: "object"
+          required:
+            - key
+          properties:
+            typeId:
+              $ref: '#/components/schemas/ReferenceTypeId'
+            key:
+              type: "string"
+    AssociateRolePagedQueryResponse:
+      type: "object"
+      required:
+        - count
+        - limit
+        - offset
+        - results
+      properties:
+        limit:
+          type: "integer"
+          format: "int64"
+        offset:
+          type: "integer"
+          format: "int64"
+        count:
+          type: "integer"
+          format: "int64"
+        total:
+          type: "integer"
+          format: "int64"
+        results:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/AssociateRole'
+    AssociateRoleReference:
+      allOf:
+        - $ref: '#/components/schemas/Reference'
+        - type: "object"
+          required:
+            - id
+          properties:
+            typeId:
+              $ref: '#/components/schemas/ReferenceTypeId'
+            id:
+              type: "string"
+            obj:
+              $ref: '#/components/schemas/AssociateRole'
+    AssociateRoleResourceIdentifier:
+      allOf:
+        - $ref: '#/components/schemas/ResourceIdentifier'
+        - type: "object"
+          properties:
+            typeId:
+              $ref: '#/components/schemas/ReferenceTypeId'
+            id:
+              type: "string"
+            key:
+              type: "string"
+    AssociateRoleUpdate:
+      type: "object"
+      required:
+        - actions
+        - version
+      properties:
+        version:
+          type: "integer"
+          format: "int64"
+        actions:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/AssociateRoleUpdateAction'
+    AssociateRoleUpdateAction:
+      type: "object"
+      discriminator:
+        propertyName: action
+        mapping:
+          addPermission: '#/components/schemas/AssociateRoleAddPermissionAction'
+          changeBuyerAssignable: '#/components/schemas/AssociateRoleChangeBuyerAssignableAction'
+          removePermission: '#/components/schemas/AssociateRoleRemovePermissionAction'
+          setCustomField: '#/components/schemas/AssociateRoleSetCustomFieldAction'
+          setCustomType: '#/components/schemas/AssociateRoleSetCustomTypeAction'
+          setName: '#/components/schemas/AssociateRoleSetNameAction'
+          setPermissions: '#/components/schemas/AssociateRoleSetPermissionsAction'
+      required:
+        - action
+      properties:
+        action:
+          type: "string"
+    BusinessUnitPermission:
+      type: "string"
+      enum:
+        - AddChildUnits
+        - UpdateAssociates
+        - UpdateBusinessUnitDetails
+        - UpdateParentUnit
+      x-annotation-package: "AssociateRole"
+      x-annotation-docs-uri: "https://docs.commercetools.com/api/projects/associate-roles#business-unit-permission"
+      x-annotation-enumDescriptions:
+        AddChildUnits: "An Associate can create a child Business Unit.n"
+        UpdateAssociates: "An Associate can manage other Associates.n"
+        UpdateBusinessUnitDetails: "An Associate can edit Business Unit details.n"
+        UpdateParentUnit: "An Associate can manage the parent Business Unit.n"
+    CartPermission:
+      type: "string"
+      enum:
+        - CreateMyCarts
+        - CreateOthersCarts
+        - DeleteMyCarts
+        - DeleteOthersCarts
+        - UpdateMyCarts
+        - UpdateOthersCarts
+        - ViewMyCarts
+        - ViewOthersCarts
+      x-annotation-package: "AssociateRole"
+      x-annotation-docs-uri: "https://docs.commercetools.com/api/projects/associate-roles#cart-permission"
+      x-annotation-enumDescriptions:
+        CreateMyCarts: "An Associate can create their own B2B Carts.n"
+        CreateOthersCarts: "An Associate can create B2B Carts that belong to other Associates.n"
+        DeleteMyCarts: "An Associate can delete their own B2B Carts.n"
+        DeleteOthersCarts: "An Associate can delete B2B Carts that belong to other Associates.n"
+        UpdateMyCarts: "An Associate can update their own B2B Carts.n"
+        UpdateOthersCarts: "An Associate can update B2B Carts that belong to other Associates.n"
+        ViewMyCarts: "An Associate can view their own B2B Carts.n"
+        ViewOthersCarts: "An Associate can view B2B Carts that belong to other Associates.n"
+    OrderPermission:
+      type: "string"
+      enum:
+        - CreateMyOrdersFromMyCarts
+        - CreateOrdersFromOthersCarts
+        - CreateMyOrdersFromMyQuotes
+        - CreateOrdersFromOthersQuotes
+        - UpdateMyOrders
+        - UpdateOthersOrders
+        - ViewMyOrders
+        - ViewOthersOrders
+      x-annotation-package: "AssociateRole"
+      x-annotation-docs-uri: "https://docs.commercetools.com/api/projects/associate-roles#order-permission"
+      x-annotation-enumDescriptions:
+        CreateMyOrdersFromMyCarts: "An Associate can create Orders from their own B2B Carts.n"
+        CreateOrdersFromOthersCarts: "An Associate can create Orders from B2B Carts that belong
+         to other Associates.n"
+        CreateMyOrdersFromMyQuotes: "An Associate can create Orders from their own B2B Quotes.n"
+        CreateOrdersFromOthersQuotes: "An Associate can create Orders from B2B Quotes that
+         belong to other Associates.n"
+        UpdateMyOrders: "An Associate can update their own B2B Orders.n"
+        UpdateOthersOrders: "An Associate can update B2B Orders that belong to other Associates.n"
+        ViewMyOrders: "An Associate can view their own B2B Orders.n"
+        ViewOthersOrders: "An Associate can view B2B Orders that belong to other Associates.n"
+    Permission:
+      type: "string"
+      enum:
+        - AddChildUnits
+        - UpdateAssociates
+        - UpdateBusinessUnitDetails
+        - UpdateParentUnit
+        - CreateMyCarts
+        - CreateOthersCarts
+        - UpdateMyCarts
+        - UpdateOthersCarts
+        - ViewMyCarts
+        - ViewOthersCarts
+        - CreateMyOrdersFromMyCarts
+        - CreateMyOrdersFromMyQuotes
+        - CreateOrdersFromOthersCarts
+        - CreateOrdersFromOthersQuotes
+        - UpdateMyOrders
+        - UpdateOthersOrders
+        - ViewMyOrders
+        - ViewOthersOrders
+        - AcceptMyQuotes
+        - AcceptOthersQuotes
+        - DeclineMyQuotes
+        - DeclineOthersQuotes
+        - RenegotiateMyQuotes
+        - RenegotiateOthersQuotes
+        - ViewMyQuotes
+        - ViewOthersQuotes
+        - CreateMyQuoteRequestsFromMyCarts
+        - CreateQuoteRequestsFromOthersCarts
+        - UpdateMyQuoteRequests
+        - UpdateOthersQuoteRequests
+        - ViewMyQuoteRequests
+        - ViewOthersQuoteRequests
+      x-annotation-package: "AssociateRole"
+      x-annotation-docs-uri: "https://docs.commercetools.com/api/projects/associate-roles#permission"
+      x-annotation-enumDescriptions:
+        AddChildUnits: "An Associate can create a child Business Unit.n"
+        UpdateAssociates: "An Associate can manage other Associates.n"
+        UpdateBusinessUnitDetails: "An Associate can edit Business Unit details.n"
+        UpdateParentUnit: "An Associate can manage the parent Business Unit.n"
+        CreateMyCarts: "An Associate can create their own B2B Carts.n"
+        CreateOthersCarts: "An Associate can create B2B Carts that belong to other Associates.n"
+        DeleteMyCarts: "An Associate can delete their own B2B Carts.n"
+        DeleteOthersCarts: "An Associate can delete B2B Carts that belong to other Associates.n"
+        UpdateMyCarts: "An Associate can update their own B2B Carts.n"
+        UpdateOthersCarts: "An Associate can update B2B Carts that belong to other Associates.n"
+        ViewMyCarts: "An Associate can view their own B2B Carts.n"
+        ViewOthersCarts: "An Associate can view B2B Carts that belong to other Associates.n"
+        CreateMyOrdersFromMyCarts: "An Associate can create Orders from their own B2B Carts.n"
+        CreateOrdersFromOthersCarts: "An Associate can create Orders from B2B Carts that belong
+         to other Associates.n"
+        CreateMyOrdersFromMyQuotes: "An Associate can create Orders from their own B2B Quotes.n"
+        CreateOrdersFromOthersQuotes: "An Associate can create Orders from B2B Quotes that
+         belong to other Associates.n"
+        UpdateMyOrders: "An Associate can update their own B2B Orders.n"
+        UpdateOthersOrders: "An Associate can update B2B Orders that belong to other Associates.n"
+        ViewMyOrders: "An Associate can view their own B2B Orders.n"
+        ViewOthersOrders: "An Associate can view B2B Orders that belong to other Associates.n"
+        AcceptMyQuotes: "An Associate can accept their own B2B Quotes.n"
+        AcceptOthersQuotes: "An Associate can accept B2B Quotes that belong to other Associates.n"
+        DeclineMyQuotes: "An Associate can decline their own B2B Quotes.n"
+        DeclineOthersQuotes: "An Associate can decline B2B Quotes that belong to other Associates.n"
+        RenegotiateMyQuotes: "An Associate can renegotiate their own B2B Quotes.n"
+        RenegotiateOthersQuotes: "An Associate can renegotiate B2B Quotes that belong to other
+         Associates.n"
+        ViewMyQuotes: "An Associate can view their own B2B Quotes.n"
+        ViewOthersQuotes: "An Associate can view B2B Quotes that belong to other Associates.n"
+        CreateMyQuoteRequestsFromMyCarts: "An Associate can create their own Quote Requests
+         from their own B2B Carts.n"
+        CreateQuoteRequestsFromOthersCarts: "An Associate can create Quote Requests from B2B
+         Carts that belong to other Associates.n"
+        UpdateMyQuoteRequests: "An Associate can update their own B2B Quote Requests.n"
+        UpdateOthersQuoteRequests: "An Associate can update B2B Quote Requests of other Associates.n"
+        ViewMyQuoteRequests: "An Associate can view their own B2B Quote Requests.n"
+        ViewOthersQuoteRequests: "An Associate can view B2B Quote Requests that belong to
+         other Associates.n"
+    QuotePermission:
+      type: "string"
+      enum:
+        - AcceptMyQuotes
+        - AcceptOthersQuotes
+        - DeclineMyQuotes
+        - DeclineOthersQuotes
+        - RenegotiateMyQuotes
+        - RenegotiateOthersQuotes
+        - ViewMyQuotes
+        - ViewOthersQuotes
+      x-annotation-package: "AssociateRole"
+      x-annotation-docs-uri: "https://docs.commercetools.com/api/projects/associate-roles#quote-permission"
+      x-annotation-enumDescriptions:
+        AcceptMyQuotes: "An Associate can accept their own B2B Quotes.n"
+        AcceptOthersQuotes: "An Associate can accept B2B Quotes that belong to other Associates.n"
+        DeclineMyQuotes: "An Associate can decline their own B2B Quotes.n"
+        DeclineOthersQuotes: "An Associate can decline B2B Quotes that belong to other Associates.n"
+        RenegotiateMyQuotes: "An Associate can renegotiate their own B2B Quotes.n"
+        RenegotiateOthersQuotes: "An Associate can renegotiate B2B Quotes that belong to other
+         Associates.n"
+        ViewMyQuotes: "An Associate can view their own B2B Quotes.n"
+        ViewOthersQuotes: "An Associate can view B2B Quotes that belong to other Associates.n"
+    QuoteRequestPermission:
+      type: "string"
+      enum:
+        - CreateMyQuoteRequestsFromMyCarts
+        - CreateQuoteRequestsFromOthersCarts
+        - UpdateMyQuoteRequests
+        - UpdateOthersQuoteRequests
+        - ViewMyQuoteRequests
+        - ViewOthersQuoteRequests
+      x-annotation-package: "AssociateRole"
+      x-annotation-docs-uri: "https://docs.commercetools.com/api/projects/associate-roles#quoterequest-permission"
+      x-annotation-enumDescriptions:
+        CreateMyQuoteRequestsFromMyCarts: "An Associate can create their own Quote Requests
+         from their own B2B Carts.n"
+        CreateQuoteRequestsFromOthersCarts: "An Associate can create Quote Requests from B2B
+         Carts that belong to other Associates.n"
+        UpdateMyQuoteRequests: "An Associate can update their own B2B Quote Requests.n"
+        UpdateOthersQuoteRequests: "An Associate can update B2B Quote Requests of other Associates.n"
+        ViewMyQuoteRequests: "An Associate can view their own B2B Quote Requests.n"
+        ViewOthersQuoteRequests: "An Associate can view B2B Quote Requests that belong to
+         other Associates.n"
+    AssociateRoleAddPermissionAction:
+      allOf:
+        - $ref: '#/components/schemas/AssociateRoleUpdateAction'
+        - type: "object"
+          required:
+            - permission
+          properties:
+            action:
+              type: "string"
+            permission:
+              $ref: '#/components/schemas/Permission'
+    AssociateRoleChangeBuyerAssignableAction:
+      allOf:
+        - $ref: '#/components/schemas/AssociateRoleUpdateAction'
+        - type: "object"
+          required:
+            - buyerAssignable
+          properties:
+            action:
+              type: "string"
+            buyerAssignable:
+              type: "boolean"
+    AssociateRoleRemovePermissionAction:
+      allOf:
+        - $ref: '#/components/schemas/AssociateRoleUpdateAction'
+        - type: "object"
+          required:
+            - permission
+          properties:
+            action:
+              type: "string"
+            permission:
+              $ref: '#/components/schemas/Permission'
+    AssociateRoleSetCustomFieldAction:
+      allOf:
+        - $ref: '#/components/schemas/AssociateRoleUpdateAction'
+        - type: "object"
+          required:
+            - name
+          properties:
+            action:
+              type: "string"
+            name:
+              type: "string"
+            value:
+              {}
+    AssociateRoleSetCustomTypeAction:
+      allOf:
+        - $ref: '#/components/schemas/AssociateRoleUpdateAction'
+        - type: "object"
+          properties:
+            action:
+              type: "string"
+            type:
+              $ref: '#/components/schemas/TypeResourceIdentifier'
+            fields:
+              $ref: '#/components/schemas/FieldContainer'
+    AssociateRoleSetNameAction:
+      allOf:
+        - $ref: '#/components/schemas/AssociateRoleUpdateAction'
+        - type: "object"
+          properties:
+            action:
+              type: "string"
+            name:
+              type: "string"
+    AssociateRoleSetPermissionsAction:
+      allOf:
+        - $ref: '#/components/schemas/AssociateRoleUpdateAction'
+        - type: "object"
+          properties:
+            action:
+              type: "string"
+            permissions:
+              type: "array"
+              items:
+                $ref: '#/components/schemas/Permission'
     AttributeGroup:
       allOf:
         - $ref: '#/components/schemas/BaseResource'
@@ -24637,34 +27473,54 @@ components:
     Associate:
       type: "object"
       required:
+        - associateRoleAssignments
         - customer
         - roles
       properties:
+        associateRoleAssignments:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/AssociateRoleAssignment'
         roles:
           type: "array"
           items:
-            $ref: '#/components/schemas/AssociateRole'
+            $ref: '#/components/schemas/AssociateRoleDeprecated'
         customer:
           $ref: '#/components/schemas/CustomerReference'
     AssociateDraft:
       type: "object"
       required:
         - customer
-        - roles
       properties:
+        associateRoleAssignments:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/AssociateRoleAssignment'
         roles:
           type: "array"
           items:
-            $ref: '#/components/schemas/AssociateRole'
+            $ref: '#/components/schemas/AssociateRoleDeprecated'
         customer:
           $ref: '#/components/schemas/CustomerResourceIdentifier'
-    AssociateRole:
+    AssociateRoleAssignment:
+      type: "object"
+      required:
+        - associateRole
+      properties:
+        associateRole:
+          $ref: '#/components/schemas/AssociateRoleResourceIdentifier'
+    AssociateRoleAssignmentDraft:
+      type: "object"
+      properties:
+        associateRole:
+          $ref: '#/components/schemas/AssociateRoleResourceIdentifier'
+    AssociateRoleDeprecated:
       type: "string"
       enum:
         - Admin
         - Buyer
       x-annotation-package: "BusinessUnit"
-      x-annotation-docs-uri: "https://docs.commercetools.com/api/projects/business-units#associaterole"
+      x-annotation-docs-uri: "https://docs.commercetools.com/api/projects/business-units#associateroledeprecated"
       x-annotation-enumDescriptions:
         Admin: "The Associate can update the Business Unit, create child Business Units and
          add or remove other Associates.n"
@@ -29234,6 +32090,7 @@ components:
       discriminator:
         propertyName: typeId
         mapping:
+          associate-role: '#/components/schemas/AssociateRoleKeyReference'
           business-unit: '#/components/schemas/BusinessUnitKeyReference'
           store: '#/components/schemas/StoreKeyReference'
       required:
@@ -29405,6 +32262,7 @@ components:
       discriminator:
         propertyName: typeId
         mapping:
+          associate-role: '#/components/schemas/AssociateRoleReference'
           attribute-group: '#/components/schemas/AttributeGroupReference'
           business-unit: '#/components/schemas/BusinessUnitReference'
           cart-discount: '#/components/schemas/CartDiscountReference'
@@ -29446,6 +32304,7 @@ components:
     ReferenceTypeId:
       type: "string"
       enum:
+        - associate-role
         - attribute-group
         - business-unit
         - cart
@@ -29482,6 +32341,7 @@ components:
       x-annotation-package: "Common"
       x-annotation-enumDescriptions:
         attribute-group: "References an [AttributeGroup](ctp:api:type:AttributeGroup).n"
+        associate-role: "References an [AssociateRole](ctp:api:type:AssociateRole).n"
         business-unit: "References a [BusinessUnit](ctp:api:type:BusinessUnit).n"
         cart: "References a [Cart](ctp:api:type:Cart).n"
         cart-discount: "References a [CartDiscount](ctp:api:type:CartDiscount).n"
@@ -29519,6 +32379,7 @@ components:
       discriminator:
         propertyName: typeId
         mapping:
+          associate-role: '#/components/schemas/AssociateRoleResourceIdentifier'
           attribute-group: '#/components/schemas/AttributeGroupResourceIdentifier'
           business-unit: '#/components/schemas/BusinessUnitResourceIdentifier'
           cart-discount: '#/components/schemas/CartDiscountResourceIdentifier'
@@ -34782,6 +37643,256 @@ components:
               type: "string"
             description:
               $ref: '#/components/schemas/LocalizedString'
+    AssociateRoleBuyerAssignableChangedMessage:
+      allOf:
+        - $ref: '#/components/schemas/Message'
+        - type: "object"
+          required:
+            - buyerAssignable
+          properties:
+            id:
+              type: "string"
+            version:
+              type: "integer"
+              format: "int64"
+            createdAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedBy:
+              $ref: '#/components/schemas/LastModifiedBy'
+            createdBy:
+              $ref: '#/components/schemas/CreatedBy'
+            sequenceNumber:
+              type: "integer"
+              format: "int64"
+            resource:
+              $ref: '#/components/schemas/Reference'
+            resourceVersion:
+              type: "integer"
+              format: "int64"
+            type:
+              type: "string"
+            resourceUserProvidedIdentifiers:
+              $ref: '#/components/schemas/UserProvidedIdentifiers'
+            buyerAssignable:
+              type: "boolean"
+    AssociateRoleCreatedMessage:
+      allOf:
+        - $ref: '#/components/schemas/Message'
+        - type: "object"
+          required:
+            - associateRole
+          properties:
+            id:
+              type: "string"
+            version:
+              type: "integer"
+              format: "int64"
+            createdAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedBy:
+              $ref: '#/components/schemas/LastModifiedBy'
+            createdBy:
+              $ref: '#/components/schemas/CreatedBy'
+            sequenceNumber:
+              type: "integer"
+              format: "int64"
+            resource:
+              $ref: '#/components/schemas/Reference'
+            resourceVersion:
+              type: "integer"
+              format: "int64"
+            type:
+              type: "string"
+            resourceUserProvidedIdentifiers:
+              $ref: '#/components/schemas/UserProvidedIdentifiers'
+            associateRole:
+              $ref: '#/components/schemas/AssociateRole'
+    AssociateRoleDeletedMessage:
+      allOf:
+        - $ref: '#/components/schemas/Message'
+        - type: "object"
+          properties:
+            id:
+              type: "string"
+            version:
+              type: "integer"
+              format: "int64"
+            createdAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedBy:
+              $ref: '#/components/schemas/LastModifiedBy'
+            createdBy:
+              $ref: '#/components/schemas/CreatedBy'
+            sequenceNumber:
+              type: "integer"
+              format: "int64"
+            resource:
+              $ref: '#/components/schemas/Reference'
+            resourceVersion:
+              type: "integer"
+              format: "int64"
+            type:
+              type: "string"
+            resourceUserProvidedIdentifiers:
+              $ref: '#/components/schemas/UserProvidedIdentifiers'
+    AssociateRoleNameChangedMessage:
+      allOf:
+        - $ref: '#/components/schemas/Message'
+        - type: "object"
+          required:
+            - name
+          properties:
+            id:
+              type: "string"
+            version:
+              type: "integer"
+              format: "int64"
+            createdAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedBy:
+              $ref: '#/components/schemas/LastModifiedBy'
+            createdBy:
+              $ref: '#/components/schemas/CreatedBy'
+            sequenceNumber:
+              type: "integer"
+              format: "int64"
+            resource:
+              $ref: '#/components/schemas/Reference'
+            resourceVersion:
+              type: "integer"
+              format: "int64"
+            type:
+              type: "string"
+            resourceUserProvidedIdentifiers:
+              $ref: '#/components/schemas/UserProvidedIdentifiers'
+            name:
+              type: "string"
+    AssociateRolePermissionAddedMessage:
+      allOf:
+        - $ref: '#/components/schemas/Message'
+        - type: "object"
+          required:
+            - permission
+          properties:
+            id:
+              type: "string"
+            version:
+              type: "integer"
+              format: "int64"
+            createdAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedBy:
+              $ref: '#/components/schemas/LastModifiedBy'
+            createdBy:
+              $ref: '#/components/schemas/CreatedBy'
+            sequenceNumber:
+              type: "integer"
+              format: "int64"
+            resource:
+              $ref: '#/components/schemas/Reference'
+            resourceVersion:
+              type: "integer"
+              format: "int64"
+            type:
+              type: "string"
+            resourceUserProvidedIdentifiers:
+              $ref: '#/components/schemas/UserProvidedIdentifiers'
+            permission:
+              $ref: '#/components/schemas/Permission'
+    AssociateRolePermissionRemovedMessage:
+      allOf:
+        - $ref: '#/components/schemas/Message'
+        - type: "object"
+          required:
+            - permission
+          properties:
+            id:
+              type: "string"
+            version:
+              type: "integer"
+              format: "int64"
+            createdAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedBy:
+              $ref: '#/components/schemas/LastModifiedBy'
+            createdBy:
+              $ref: '#/components/schemas/CreatedBy'
+            sequenceNumber:
+              type: "integer"
+              format: "int64"
+            resource:
+              $ref: '#/components/schemas/Reference'
+            resourceVersion:
+              type: "integer"
+              format: "int64"
+            type:
+              type: "string"
+            resourceUserProvidedIdentifiers:
+              $ref: '#/components/schemas/UserProvidedIdentifiers'
+            permission:
+              $ref: '#/components/schemas/Permission'
+    AssociateRolePermissionsSetMessage:
+      allOf:
+        - $ref: '#/components/schemas/Message'
+        - type: "object"
+          required:
+            - permissions
+          properties:
+            id:
+              type: "string"
+            version:
+              type: "integer"
+              format: "int64"
+            createdAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedAt:
+              type: "string"
+              format: "datetime"
+            lastModifiedBy:
+              $ref: '#/components/schemas/LastModifiedBy'
+            createdBy:
+              $ref: '#/components/schemas/CreatedBy'
+            sequenceNumber:
+              type: "integer"
+              format: "int64"
+            resource:
+              $ref: '#/components/schemas/Reference'
+            resourceVersion:
+              type: "integer"
+              format: "int64"
+            type:
+              type: "string"
+            resourceUserProvidedIdentifiers:
+              $ref: '#/components/schemas/UserProvidedIdentifiers'
+            permissions:
+              type: "array"
+              items:
+                $ref: '#/components/schemas/Permission'
     BusinessUnitAddressAddedMessage:
       allOf:
         - $ref: '#/components/schemas/Message'
@@ -36584,6 +39695,13 @@ components:
           discriminator:
             propertyName: type
             mapping:
+              AssociateRoleBuyerAssignableChanged: '#/components/schemas/AssociateRoleBuyerAssignableChangedMessage'
+              AssociateRoleCreated: '#/components/schemas/AssociateRoleCreatedMessage'
+              AssociateRoleDeleted: '#/components/schemas/AssociateRoleDeletedMessage'
+              AssociateRoleNameChanged: '#/components/schemas/AssociateRoleNameChangedMessage'
+              AssociateRolePermissionAdded: '#/components/schemas/AssociateRolePermissionAddedMessage'
+              AssociateRolePermissionRemoved: '#/components/schemas/AssociateRolePermissionRemovedMessage'
+              AssociateRolePermissionsSet: '#/components/schemas/AssociateRolePermissionsSetMessage'
               BusinessUnitAddressAdded: '#/components/schemas/BusinessUnitAddressAddedMessage'
               BusinessUnitAddressChanged: '#/components/schemas/BusinessUnitAddressChangedMessage'
               BusinessUnitAddressRemoved: '#/components/schemas/BusinessUnitAddressRemovedMessage'
@@ -40792,6 +43910,81 @@ components:
           $ref: '#/components/schemas/LocalizedString'
         containerAndKey:
           $ref: '#/components/schemas/ContainerAndKey'
+    AssociateRoleBuyerAssignableChangedMessagePayload:
+      allOf:
+        - $ref: '#/components/schemas/MessagePayload'
+        - type: "object"
+          required:
+            - buyerAssignable
+          properties:
+            type:
+              type: "string"
+            buyerAssignable:
+              type: "boolean"
+    AssociateRoleCreatedMessagePayload:
+      allOf:
+        - $ref: '#/components/schemas/MessagePayload'
+        - type: "object"
+          required:
+            - associateRole
+          properties:
+            type:
+              type: "string"
+            associateRole:
+              $ref: '#/components/schemas/AssociateRole'
+    AssociateRoleDeletedMessagePayload:
+      allOf:
+        - $ref: '#/components/schemas/MessagePayload'
+        - type: "object"
+          properties:
+            type:
+              type: "string"
+    AssociateRoleNameChangedMessagePayload:
+      allOf:
+        - $ref: '#/components/schemas/MessagePayload'
+        - type: "object"
+          required:
+            - name
+          properties:
+            type:
+              type: "string"
+            name:
+              type: "string"
+    AssociateRolePermissionAddedMessagePayload:
+      allOf:
+        - $ref: '#/components/schemas/MessagePayload'
+        - type: "object"
+          required:
+            - permission
+          properties:
+            type:
+              type: "string"
+            permission:
+              $ref: '#/components/schemas/Permission'
+    AssociateRolePermissionRemovedMessagePayload:
+      allOf:
+        - $ref: '#/components/schemas/MessagePayload'
+        - type: "object"
+          required:
+            - permission
+          properties:
+            type:
+              type: "string"
+            permission:
+              $ref: '#/components/schemas/Permission'
+    AssociateRolePermissionsSetMessagePayload:
+      allOf:
+        - $ref: '#/components/schemas/MessagePayload'
+        - type: "object"
+          required:
+            - permissions
+          properties:
+            type:
+              type: "string"
+            permissions:
+              type: "array"
+              items:
+                $ref: '#/components/schemas/Permission'
     BusinessUnitAddressAddedMessagePayload:
       allOf:
         - $ref: '#/components/schemas/MessagePayload'
@@ -41382,6 +44575,13 @@ components:
       discriminator:
         propertyName: type
         mapping:
+          AssociateRoleBuyerAssignableChanged: '#/components/schemas/AssociateRoleBuyerAssignableChangedMessagePayload'
+          AssociateRoleCreated: '#/components/schemas/AssociateRoleCreatedMessagePayload'
+          AssociateRoleDeleted: '#/components/schemas/AssociateRoleDeletedMessagePayload'
+          AssociateRoleNameChanged: '#/components/schemas/AssociateRoleNameChangedMessagePayload'
+          AssociateRolePermissionAdded: '#/components/schemas/AssociateRolePermissionAddedMessagePayload'
+          AssociateRolePermissionRemoved: '#/components/schemas/AssociateRolePermissionRemovedMessagePayload'
+          AssociateRolePermissionsSet: '#/components/schemas/AssociateRolePermissionsSetMessagePayload'
           BusinessUnitAddressAdded: '#/components/schemas/BusinessUnitAddressAddedMessagePayload'
           BusinessUnitAddressChanged: '#/components/schemas/BusinessUnitAddressChangedMessagePayload'
           BusinessUnitAddressRemoved: '#/components/schemas/BusinessUnitAddressRemovedMessagePayload'
@@ -53573,6 +56773,7 @@ components:
     MessageSubscriptionResourceTypeId:
       type: "string"
       enum:
+        - associate-role
         - business-unit
         - category
         - customer
@@ -53589,6 +56790,7 @@ components:
         - store
       x-annotation-package: "Subscription"
       x-annotation-enumDescriptions:
+        associate-role: "Messages related to [Associate Roles](ctp:api:type:AssociateRole).n"
         business-unit: "Messages related to [Business Units](ctp:api:type:BusinessUnit).n"
         category: "Messages related to [Categories](ctp:api:type:Category).n"
         customer: "Messages related to [Customers](ctp:api:type:Customer).n"
@@ -54391,6 +57593,7 @@ components:
       enum:
         - address
         - asset
+        - associate-role
         - business-unit
         - cart-discount
         - category
@@ -54424,6 +57627,7 @@ components:
          [Cart](ctp:api:type:Cart), [Order](ctp:api:type:Order), [OrderEdit](ctp:api:type:OrderEdit),
          [Customer](ctp:api:type:Customer), and [Channel](ctp:api:type:Channel)n"
         asset: "[Asset](ctp:api:type:Asset) on [Category](ctp:api:type:Category) and [ProductVariant](ctp:api:type:ProductVariant)n"
+        associate-role: "[AssociateRole](ctp:api:type:AssociateRole)n"
         business-unit: "[BusinessUnit](ctp:api:type:BusinessUnit)n"
         cart-discount: "[CartDiscount](ctp:api:type:CartDiscount)n"
         category: "[Category](ctp:api:type:Category)n"

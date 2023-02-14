@@ -9,7 +9,8 @@ legend
 |<back:blue>   </back>| discriminated class |
 endlegend
 interface Associate [[Associate.svg]]  {
-    roles: [[AssociateRole.svg List<AssociateRole>]]
+    associateRoleAssignments: [[AssociateRoleAssignment.svg List<AssociateRoleAssignment>]]
+    roles: [[AssociateRoleDeprecated.svg List<AssociateRoleDeprecated>]]
     customer: [[CustomerReference.svg CustomerReference]]
 }
 

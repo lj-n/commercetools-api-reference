@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="156px" preserveAspectRatio="none" style="width:394px;height:156px;background:#FFFFFF;" version="1.1" viewBox="0 0 394 156" width="394px" zoomAndPan="magnify"><defs/><g><!--MD5=[472e139c14c5afdd66140dcd0fd8579f]
+class QuoteRequestPermission--><g id="elem_QuoteRequestPermission"><rect codeLine="3" fill="#F1F1F1" height="137.7813" id="QuoteRequestPermission" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="375" x="12" y="12"/><ellipse cx="106.25" cy="28" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M110.3594,34 L102.6406,34 L102.6406,21.6094 L110.3594,21.6094 L110.3594,23.7656 L105.0938,23.7656 L105.0938,26.4375 L109.8594,26.4375 L109.8594,28.5938 L105.0938,28.5938 L105.0938,31.8438 L110.3594,31.8438 L110.3594,34 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="178" x="126.75" y="32.8467">QuoteRequestPermission</text><line style="stroke:#181818;stroke-width:0.5;" x1="13" x2="386" y1="44" y2="44"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="354" x="18" y="60.9951">CREATE_MY_QUOTE_REQUESTS_FROM_MY_CARTS</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="363" x="18" y="77.292">CREATE_QUOTE_REQUESTS_FROM_OTHERS_CARTS</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="225" x="18" y="93.5889">UPDATE_MY_QUOTE_REQUESTS</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="262" x="18" y="109.8857">UPDATE_OTHERS_QUOTE_REQUESTS</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="18" y="126.1826">VIEW_MY_QUOTE_REQUESTS</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="239" x="18" y="142.4795">VIEW_OTHERS_QUOTE_REQUESTS</text></g><!--MD5=[1ebab44b3e67f1f3fe801564ce463cde]
+@startuml
+!pragma layout elk
+hide methods
+enum QuoteRequestPermission {
+    CREATE_MY_QUOTE_REQUESTS_FROM_MY_CARTS
+    CREATE_QUOTE_REQUESTS_FROM_OTHERS_CARTS
+    UPDATE_MY_QUOTE_REQUESTS
+    UPDATE_OTHERS_QUOTE_REQUESTS
+    VIEW_MY_QUOTE_REQUESTS
+    VIEW_OTHERS_QUOTE_REQUESTS
+}
+
+
+@enduml
+
+PlantUML version 1.2022.13(Sat Nov 19 13:22:17 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

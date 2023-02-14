@@ -13,6 +13,33 @@ interface MessagePayload [[MessagePayload.svg]]  {
 }
 
 
+interface AssociateRoleBuyerAssignableChangedMessagePayload [[AssociateRoleBuyerAssignableChangedMessagePayload.svg]]  {
+    type: String
+    buyerAssignable: Boolean
+}
+interface AssociateRoleCreatedMessagePayload [[AssociateRoleCreatedMessagePayload.svg]]  {
+    type: String
+    associateRole: [[AssociateRole.svg AssociateRole]]
+}
+interface AssociateRoleDeletedMessagePayload [[AssociateRoleDeletedMessagePayload.svg]]  {
+    type: String
+}
+interface AssociateRoleNameChangedMessagePayload [[AssociateRoleNameChangedMessagePayload.svg]]  {
+    type: String
+    name: String
+}
+interface AssociateRolePermissionAddedMessagePayload [[AssociateRolePermissionAddedMessagePayload.svg]]  {
+    type: String
+    permission: [[Permission.svg Permission]]
+}
+interface AssociateRolePermissionRemovedMessagePayload [[AssociateRolePermissionRemovedMessagePayload.svg]]  {
+    type: String
+    permission: [[Permission.svg Permission]]
+}
+interface AssociateRolePermissionsSetMessagePayload [[AssociateRolePermissionsSetMessagePayload.svg]]  {
+    type: String
+    permissions: [[Permission.svg List<Permission>]]
+}
 interface BusinessUnitAddressAddedMessagePayload [[BusinessUnitAddressAddedMessagePayload.svg]]  {
     type: String
     address: [[Address.svg Address]]
@@ -755,6 +782,13 @@ interface OrderEditPreviewSuccess [[OrderEditPreviewSuccess.svg]]  {
     preview: [[StagedOrder.svg StagedOrder]]
     messagePayloads: [[MessagePayload.svg List<MessagePayload>]]
 }
+MessagePayload --> AssociateRoleBuyerAssignableChangedMessagePayload #blue;text:blue : "type : AssociateRoleBuyerAssignableChanged"
+MessagePayload --> AssociateRoleCreatedMessagePayload #blue;text:blue : "type : AssociateRoleCreated"
+MessagePayload --> AssociateRoleDeletedMessagePayload #blue;text:blue : "type : AssociateRoleDeleted"
+MessagePayload --> AssociateRoleNameChangedMessagePayload #blue;text:blue : "type : AssociateRoleNameChanged"
+MessagePayload --> AssociateRolePermissionAddedMessagePayload #blue;text:blue : "type : AssociateRolePermissionAdded"
+MessagePayload --> AssociateRolePermissionRemovedMessagePayload #blue;text:blue : "type : AssociateRolePermissionRemoved"
+MessagePayload --> AssociateRolePermissionsSetMessagePayload #blue;text:blue : "type : AssociateRolePermissionsSet"
 MessagePayload --> BusinessUnitAddressAddedMessagePayload #blue;text:blue : "type : BusinessUnitAddressAdded"
 MessagePayload --> BusinessUnitAddressChangedMessagePayload #blue;text:blue : "type : BusinessUnitAddressChanged"
 MessagePayload --> BusinessUnitAddressRemovedMessagePayload #blue;text:blue : "type : BusinessUnitAddressRemoved"

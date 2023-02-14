@@ -1,0 +1,12 @@
+@startuml
+
+hide methods
+enum BusinessUnitPermission {
+    ADD_CHILD_UNITS
+    UPDATE_ASSOCIATES
+    UPDATE_BUSINESS_UNIT_DETAILS
+    UPDATE_PARENT_UNIT
+}
+
+
+@enduml

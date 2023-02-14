@@ -1,0 +1,30 @@
+@startuml
+
+hide empty fields
+hide empty methods
+legend
+|= |= line |
+|<back:black>   </back>| inheritance |
+|<back:green>   </back>| property reference |
+|<back:blue>   </back>| discriminated class |
+endlegend
+interface AssociateRoleAssignment [[AssociateRoleAssignment.svg]]  {
+    associateRole: [[AssociateRoleResourceIdentifier.svg AssociateRoleResourceIdentifier]]
+}
+
+
+
+interface Associate [[Associate.svg]]  {
+    associateRoleAssignments: [[AssociateRoleAssignment.svg List<AssociateRoleAssignment>]]
+    roles: [[AssociateRoleDeprecated.svg List<AssociateRoleDeprecated>]]
+    customer: [[CustomerReference.svg CustomerReference]]
+}
+interface AssociateDraft [[AssociateDraft.svg]]  {
+    associateRoleAssignments: [[AssociateRoleAssignment.svg List<AssociateRoleAssignment>]]
+    roles: [[AssociateRoleDeprecated.svg List<AssociateRoleDeprecated>]]
+    customer: [[CustomerResourceIdentifier.svg CustomerResourceIdentifier]]
+}
+
+AssociateRoleAssignment --> Associate #green;text:green : "associateRoleAssignments"
+AssociateRoleAssignment --> AssociateDraft #green;text:green : "associateRoleAssignments"
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+
+hide methods
+enum CartPermission {
+    CREATE_MY_CARTS
+    CREATE_OTHERS_CARTS
+    DELETE_MY_CARTS
+    DELETE_OTHERS_CARTS
+    UPDATE_MY_CARTS
+    UPDATE_OTHERS_CARTS
+    VIEW_MY_CARTS
+    VIEW_OTHERS_CARTS
+}
+
+
+@enduml
