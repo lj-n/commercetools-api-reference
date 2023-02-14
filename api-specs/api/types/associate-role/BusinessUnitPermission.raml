@@ -1,0 +1,21 @@
+#%RAML 1.0 DataType
+(package): AssociateRole
+(docs-uri): https://docs.commercetools.com/api/projects/associate-roles#business-unit-permission
+displayName: BusinessUnitPermission
+type: string
+description: |
+  Permissions related to [Business Units](ctp:api:type:BusinessUnit).
+enum:
+  - AddChildUnits
+  - UpdateAssociates
+  - UpdateBusinessUnitDetails
+  - UpdateParentUnit
+(enumDescriptions):
+  AddChildUnits: |
+    An Associate can create a child Business Unit.
+  UpdateAssociates: |
+    An Associate can manage other Associates.
+  UpdateBusinessUnitDetails: |
+    An Associate can edit Business Unit details.
+  UpdateParentUnit: |
+    An Associate can manage the parent Business Unit.

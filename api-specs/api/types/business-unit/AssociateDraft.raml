@@ -3,10 +3,14 @@
 (docs-uri): https://docs.commercetools.com/api/projects/business-units#associatedraft
 displayName: AssociateDraft
 properties:
-  roles:
-    type: AssociateRole[]
+  associateRoleAssignments?:
+    type: AssociateRoleAssignment[]
     description: |
-      Roles the Associate should hold within the Business Unit.
+      Roles assignment to the Associate within the Business Unit.
+  roles?:
+    type: AssociateRoleDeprecated[]
+    description: |
+      Deprecated type. Use `associateRoleAssignment` instead.
   customer:
     type: CustomerResourceIdentifier
     description: |

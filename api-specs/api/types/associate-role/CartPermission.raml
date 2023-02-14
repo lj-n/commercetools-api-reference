@@ -1,0 +1,33 @@
+#%RAML 1.0 DataType
+(package): AssociateRole
+(docs-uri): https://docs.commercetools.com/api/projects/associate-roles#cart-permission
+displayName: CartPermission
+type: string
+description: |
+  Permissions related to [B2B Carts](ctp:api:type:Cart).
+enum:
+  - CreateMyCarts
+  - CreateOthersCarts
+  - DeleteMyCarts
+  - DeleteOthersCarts
+  - UpdateMyCarts
+  - UpdateOthersCarts
+  - ViewMyCarts
+  - ViewOthersCarts
+(enumDescriptions):
+  CreateMyCarts: |
+    An Associate can create their own B2B Carts.
+  CreateOthersCarts: |
+    An Associate can create B2B Carts that belong to other Associates.
+  DeleteMyCarts: |
+    An Associate can delete their own B2B Carts.
+  DeleteOthersCarts: |
+    An Associate can delete B2B Carts that belong to other Associates.
+  UpdateMyCarts: |
+    An Associate can update their own B2B Carts.
+  UpdateOthersCarts: |
+    An Associate can update B2B Carts that belong to other Associates.
+  ViewMyCarts: |
+    An Associate can view their own B2B Carts.
+  ViewOthersCarts: |
+    An Associate can view B2B Carts that belong to other Associates.

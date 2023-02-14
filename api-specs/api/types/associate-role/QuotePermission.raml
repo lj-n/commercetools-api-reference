@@ -1,0 +1,33 @@
+#%RAML 1.0 DataType
+(package): AssociateRole
+(docs-uri): https://docs.commercetools.com/api/projects/associate-roles#quote-permission
+displayName: QuotePermission
+type: string
+description: |
+  Permissions related to [B2B Quotes](ctp:api:type:Quote).
+enum:
+  - AcceptMyQuotes
+  - AcceptOthersQuotes
+  - DeclineMyQuotes
+  - DeclineOthersQuotes
+  - RenegotiateMyQuotes
+  - RenegotiateOthersQuotes
+  - ViewMyQuotes
+  - ViewOthersQuotes
+(enumDescriptions):
+  AcceptMyQuotes: |
+    An Associate can accept their own B2B Quotes.
+  AcceptOthersQuotes: |
+    An Associate can accept B2B Quotes that belong to other Associates.
+  DeclineMyQuotes: |
+    An Associate can decline their own B2B Quotes.
+  DeclineOthersQuotes: |
+    An Associate can decline B2B Quotes that belong to other Associates.
+  RenegotiateMyQuotes: |
+    An Associate can renegotiate their own B2B Quotes.
+  RenegotiateOthersQuotes: |
+    An Associate can renegotiate B2B Quotes that belong to other Associates.
+  ViewMyQuotes: |
+    An Associate can view their own B2B Quotes.
+  ViewOthersQuotes: |
+    An Associate can view B2B Quotes that belong to other Associates.

@@ -1,0 +1,27 @@
+#%RAML 1.0 DataType
+(package): AssociateRole
+(docs-uri): https://docs.commercetools.com/api/projects/associate-roles#quoterequest-permission
+displayName: QuoteRequestPermission
+type: string
+description: |
+  Permissions related to [B2B Quote Requests](ctp:api:type:QuoteRequest).
+enum:
+  - CreateMyQuoteRequestsFromMyCarts
+  - CreateQuoteRequestsFromOthersCarts
+  - UpdateMyQuoteRequests
+  - UpdateOthersQuoteRequests
+  - ViewMyQuoteRequests
+  - ViewOthersQuoteRequests
+(enumDescriptions):
+  CreateMyQuoteRequestsFromMyCarts: |
+    An Associate can create their own Quote Requests from their own B2B Carts.
+  CreateQuoteRequestsFromOthersCarts: |
+    An Associate can create Quote Requests from B2B Carts that belong to other Associates.
+  UpdateMyQuoteRequests: |
+    An Associate can update their own B2B Quote Requests.
+  UpdateOthersQuoteRequests: |
+    An Associate can update B2B Quote Requests of other Associates.
+  ViewMyQuoteRequests: |
+    An Associate can view their own B2B Quote Requests.
+  ViewOthersQuoteRequests: |
+    An Associate can view B2B Quote Requests that belong to other Associates.

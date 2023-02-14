@@ -1,0 +1,33 @@
+#%RAML 1.0 DataType
+(package): AssociateRole
+(docs-uri): https://docs.commercetools.com/api/projects/associate-roles#order-permission
+displayName: OrderPermission
+type: string
+description: |
+  Permissions related to [B2B Orders](ctp:api:type:Order).
+enum:
+  - CreateMyOrdersFromMyCarts
+  - CreateOrdersFromOthersCarts
+  - CreateMyOrdersFromMyQuotes
+  - CreateOrdersFromOthersQuotes
+  - UpdateMyOrders
+  - UpdateOthersOrders
+  - ViewMyOrders
+  - ViewOthersOrders
+(enumDescriptions):
+  CreateMyOrdersFromMyCarts: |
+    An Associate can create Orders from their own B2B Carts.
+  CreateOrdersFromOthersCarts: |
+    An Associate can create Orders from B2B Carts that belong to other Associates.
+  CreateMyOrdersFromMyQuotes: |
+    An Associate can create Orders from their own B2B Quotes.
+  CreateOrdersFromOthersQuotes: |
+    An Associate can create Orders from B2B Quotes that belong to other Associates.
+  UpdateMyOrders: |
+    An Associate can update their own B2B Orders.
+  UpdateOthersOrders: |
+    An Associate can update B2B Orders that belong to other Associates.
+  ViewMyOrders: |
+    An Associate can view their own B2B Orders.
+  ViewOthersOrders: |
+    An Associate can view B2B Orders that belong to other Associates.
